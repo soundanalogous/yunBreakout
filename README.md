@@ -120,7 +120,10 @@ Yun:
     to the name or IP address of your Yun.
 
     Serve the file from a local webserver. You should be able to interact with
-    you're Yun.
+    you're Yun. Note that at this time only a single client can reliably connect
+    to a single Yun. If you uncomment line 29 of breakout/server.py you can
+    establish a 2 client websocket connections to a single Yun. However any more
+    than 2 greatly diminishes performance. I'm looking into the cause of this.
 
 
 Troubleshooting
@@ -130,16 +133,12 @@ I've had difficulty establishing a ssh connection
 from time to time. If you absolutely cannot connect again after editing
 inittab, try this:
 
-1. Load Examples -> Bridge -> YunSerialTerminal to your Yun
-2. Open the Arduino App Serial Terminal
-3. Reset you're Yun (press the button labeled YUN RST)
-4. Watch the log output in the serial terminal. When you see the instruction
-   to press the `f` key, enter `f` in the text bar at the top of the terminal
-   and press enter. This will get you into the shell.
-5. ```bash $ cat /etc/inittab > ttyATH0::askfirst:/bin/ash --login```
-6. ```bash $ reboot -f
+1. Load an example sketch that doesn't use Serial such as: Examples -> Basics -> BareMinimum
+2. Power cycle the Yun and wait a couple of minutes for a full boot
+3. ssh into the Yun (should work now)
+4. Reupload StandardFirmataYun to the board
 
-You can close the serial terminal and should be able to ssh into your Yun
-again.
+I know this is super annoying but it's the only thing I've found that works
+(somewhat reliably) so far.
 
 
