@@ -58,10 +58,6 @@ Yun:
 
 4. Copy the contents of `linino/breakout/` to your Yun.
 
-
-
-5. Compile and upload `arduino/StandardFirmataYun`
-
    This will copy the `breakout` directory to the home directory in your Yun's
    Linino linux installation. You can change the destination to copy them
    elsewhere. Google "scp" if you're not familiar with the use of secure copy.
@@ -71,6 +67,9 @@ Yun:
    ```
 
    Enter your password when prompted
+   
+
+5. Compile and upload `arduino/StandardFirmataYun`
 
 
 6. Disable Arduino bridge serial communication:
