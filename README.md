@@ -67,7 +67,7 @@ Yun:
    ```
 
    Enter your password when prompted
-   
+
 
 5. Compile and upload `arduino/StandardFirmataYun`
 
@@ -91,7 +91,7 @@ Yun:
     $ vim inittab
     ```
     In the inittab file, comment out the line beginning with `ttyATH0`:
-    # ttyATH0::askfirst:/bin/ash --login
+    `# ttyATH0::askfirst:/bin/ash --login`
     
     ```bash
     $ reboot -f
