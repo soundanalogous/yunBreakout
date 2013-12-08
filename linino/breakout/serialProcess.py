@@ -31,6 +31,8 @@ class SerialProcess(multiprocessing.Process):
             #look for incoming serial data
             msg = ""
             if (self.sp.inWaiting() > 0):
+                # assemble string of comma separated values to send to
+                # client websocket
                 while (self.sp.inWaiting() > 0):
                     dataIn = ord(self.sp.read())
                     msg += str(dataIn) + ","

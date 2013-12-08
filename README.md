@@ -10,8 +10,14 @@ The following topics in the Arduino forum were also helpful:
 
 This bridge was designed to use BreakoutJS with an Arduino Yun without the use
 of Breakout Server (since the server is running directly on the Yun). This code
-could easily be adapted for your own purposes. It is not entirely specific to
-BreakoutJS.
+could easily be adapted for your own purposes.
+
+This bridge will work for applications the require sending and receiving binary
+data. The bridge receives a stream of bytes from the arduino and broadcasts a
+string of comma separated values to all listenting web clients (in your client
+app, simply split the received string on the comma). On the inverse it receives
+a string of comma separated values (an array of unsigned bytes sent as a string)
+from each web client and sends a string of chars (non delimited) to the arduino.
 
 This is experimental code. Try it at your own risk. If you have ideas for
 improvement, please start a discussion or open a pull request.

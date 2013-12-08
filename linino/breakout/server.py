@@ -16,7 +16,7 @@ define("port", default=8887, help="run on the given port", type=int)
 clients = []
 
 # uncomment to serve static html pages from the Yun
-# also uncomment line 54
+# also uncomment line 58
 #class IndexHandler(tornado.web.RequestHandler):
 #   def get(self):
 #       self.render('index.html')
@@ -32,6 +32,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         #print 'tornado received from client: %s' % message
         data = ""
         q = self.application.settings.get('queue')
+        # assemble a string of chars to send to the arduino
         for msg in message.split(","):
             data += chr(int(msg))
         q.put(data)
