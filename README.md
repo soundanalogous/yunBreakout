@@ -40,6 +40,7 @@ Yun:
     following 3 commands.
 
     ```bash
+    # opkg update
     $ opkg install python pyserial
     $ opkg install pyopenssl
     $ opkg install python-openssl
@@ -93,7 +94,7 @@ Yun:
     delete the inittab file or you may brick your Yun.*
 
     ```bash
-    $ cd /etc/inittab
+    $ cd /etc/
     $ vim inittab
     ```
     In the inittab file, comment out the line beginning with `ttyATH0`:
@@ -125,7 +126,7 @@ Yun:
     to the name or IP address of your Yun.
 
     Serve the file from a local webserver. You should be able to interact with
-    you're Yun. Note that at this time only a single client can reliably connect
+    your Yun. Note that at this time only a single client can reliably connect
     to a single Yun. If you uncomment line 29 of breakout/server.py you can
     establish a 2 client websocket connections to a single Yun. However any more
     than 2 greatly diminishes performance. I'm looking into the cause of this.
