@@ -40,7 +40,7 @@ Yun:
     following 3 commands.
 
     ```bash
-    # opkg update
+    $ opkg update
     $ opkg install python pyserial
     $ opkg install pyopenssl
     $ opkg install python-openssl
