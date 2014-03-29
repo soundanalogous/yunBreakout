@@ -594,7 +594,6 @@ void setup()
      while (Serial1.available() > 0) {
         Serial1.read();
      }
-    
     delay(1000);
   } while (Serial1.available() > 0);
   
