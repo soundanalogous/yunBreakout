@@ -589,14 +589,14 @@ void setup()
   
   Serial1.begin(115200); // Set the baud.
   while (!Serial1) {}
-   // Wait for U-boot to finish startup.  Consume all bytes until we are done.
+  // Wait for U-boot to finish startup.  Consume all bytes until we are done.
   do {
      while (Serial1.available() > 0) {
         Serial1.read();
-        }
+     }
     
     delay(1000);
-  } while (Serial1.available()>0);
+  } while (Serial1.available() > 0);
   
   Firmata.setFirmwareVersion(FIRMATA_MAJOR_VERSION, FIRMATA_MINOR_VERSION);
 
