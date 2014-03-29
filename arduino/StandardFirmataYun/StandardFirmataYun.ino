@@ -14,6 +14,7 @@
   Copyright (C) 2010-2011 Paul Stoffregen.  All rights reserved.
   Copyright (C) 2009 Shigeru Kobayashi.  All rights reserved.
   Copyright (C) 2009-2011 Jeff Hoefs.  All rights reserved.
+  Copyright (C) 2014 Alan Yorinks. All rights reserved.
   
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -585,6 +586,17 @@ void systemResetCallback()
 
 void setup() 
 {
+  
+  Serial1.begin(115200); // Set the baud.
+  while (!Serial1) {}
+  // Wait for U-boot to finish startup.  Consume all bytes until we are done.
+  do {
+     while (Serial1.available() > 0) {
+        Serial1.read();
+     }
+    delay(1000);
+  } while (Serial1.available() > 0);
+  
   Firmata.setFirmwareVersion(FIRMATA_MAJOR_VERSION, FIRMATA_MINOR_VERSION);
 
   Firmata.attach(ANALOG_MESSAGE, analogWriteCallback);
@@ -595,8 +607,6 @@ void setup()
   Firmata.attach(START_SYSEX, sysexCallback);
   Firmata.attach(SYSTEM_RESET, systemResetCallback);
 
-  Serial1.begin(115200);
-  while (!Serial1) {}
   
   Firmata.begin(Serial1);
   systemResetCallback();  // reset to default config
